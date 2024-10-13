@@ -21,29 +21,35 @@
                     <div class="mb-4 mt-4">
                         <form class="row" action="{{route('student.list.show')}}" method="GET">
                             <div class="col">
-                                <select onchange="getSections(this);" class="form-select" aria-label="Class" name="class_id" required>
+                                <select onchange="getSections(this);" class="form-select" aria-label="Class"
+                                    name="class_id" required>
                                     @isset($school_classes)
-                                        <option selected disabled>Please select a class</option>
-                                        @foreach ($school_classes as $school_class)
-                                            <option value="{{$school_class->id}}" {{($school_class->id == request()->query('class_id'))?'selected="selected"':''}}>{{$school_class->class_name}}</option>
-                                        @endforeach
+                                    <option selected disabled>Please select a class</option>
+                                    @foreach ($school_classes as $school_class)
+                                    <option value="{{$school_class->id}}" {{($school_class->id ==
+                                        request()->query('class_id'))?'selected="selected"':''}}>{{$school_class->class_name}}
+                                    </option>
+                                    @endforeach
                                     @endisset
                                 </select>
                             </div>
                             <div class="col">
-                                <select class="form-select" id="section-select" aria-label="Section" name="section_id" required>
-                                    <option value="{{request()->query('section_id')}}">{{request()->query('section_name')}}</option>
+                                <select class="form-select" id="section-select" aria-label="Section" name="section_id"
+                                    required>
+                                    <option value="{{request()->query('section_id')}}">
+                                        {{request()->query('section_name')}}</option>
                                 </select>
                             </div>
                             <div class="col">
-                                <button type="submit" class="btn btn-primary"><i class="bi bi-arrow-counterclockwise"></i> Load List</button>
+                                <button type="submit" class="btn btn-primary"><i
+                                        class="bi bi-arrow-counterclockwise"></i> Load List</button>
                             </div>
                         </form>
                         @foreach ($studentList as $student)
-                            @if ($loop->first)
-                                <p class="mt-3"><b>Section:</b> {{$student->section->section_name}}</p>
-                                @break
-                            @endif
+                        @if ($loop->first)
+                        <p class="mt-3"><b>Section:</b> {{$student->section->section_name}}</p>
+                        @break
+                        @endif
                         @endforeach
                         <div class="bg-white border shadow-sm p-3 mt-4">
                             <table class="table table-responsive">
@@ -64,9 +70,10 @@
                                         <th scope="row">{{$student->id_card_number}}</th>
                                         <td>
                                             @if (isset($student->student->photo))
-                                                <img src="{{asset('/storage'.$student->student->photo)}}" class="rounded" alt="Profile picture" height="30" width="30">
+                                            <img src="{{asset('/storage'.$student->student->photo)}}" class="rounded"
+                                                alt="Profile picture" height="30" width="30">
                                             @else
-                                                <i class="bi bi-person-square"></i>
+                                            <i class="bi bi-person-square"></i>
                                             @endif
                                         </td>
                                         <td>{{$student->student->first_name}}</td>
@@ -75,12 +82,19 @@
                                         <td>{{$student->student->phone}}</td>
                                         <td>
                                             <div class="btn-group" role="group">
-                                                <a href="{{route('student.attendance.show', ['id' => $student->student->id])}}" role="button" class="btn btn-sm btn-outline-primary"><i class="bi bi-eye"></i> Attendance</a>
-                                                <a href="{{url('students/view/profile/'.$student->student->id)}}" role="button" class="btn btn-sm btn-outline-primary"><i class="bi bi-eye"></i> Profile</a>
+                                                <a href="{{route('student.attendance.show', ['id' => $student->student->id])}}"
+                                                    role="button" class="btn btn-sm btn-outline-primary"><i
+                                                        class="bi bi-eye"></i> Attendance</a>
+                                                <a href="{{url('connect/students/view/profile/'.$student->student->id)}}"
+                                                    role="button" class="btn btn-sm btn-outline-primary"><i
+                                                        class="bi bi-eye"></i> Profile</a>
                                                 @can('edit users')
-                                                <a href="{{route('student.edit.show', ['id' => $student->student->id])}}" role="button" class="btn btn-sm btn-outline-primary"><i class="bi bi-pen"></i> Edit</a>
+                                                <a href="{{route('student.edit.show', ['id' => $student->student->id])}}"
+                                                    role="button" class="btn btn-sm btn-outline-primary"><i
+                                                        class="bi bi-pen"></i> Edit</a>
                                                 @endcan
-                                                {{-- <button type="button" class="btn btn-sm btn-primary"><i class="bi bi-trash2"></i> Delete</button> --}}
+                                                {{-- <button type="button" class="btn btn-sm btn-primary"><i
+                                                        class="bi bi-trash2"></i> Delete</button> --}}
                                             </div>
                                         </td>
                                     </tr>
@@ -99,7 +113,7 @@
     function getSections(obj) {
         var class_id = obj.options[obj.selectedIndex].value;
 
-        var url = "{{route('get.sections.courses.by.classId')}}?class_id=" + class_id 
+        var url = "{{route('get.sections.courses.by.classId')}}?class_id=" + class_id
 
         fetch(url)
         .then((resp) => resp.json())

@@ -11,6 +11,44 @@ const mix = require('laravel-mix');
  |
  */
 
+
+// mix.webpackConfig({
+//     resolve: {
+//         extensions: ['.vue', '.ts', '.js'],
+//     },
+//     module: {
+//         rules: [
+//             {
+//                 test: /\.vue$/, loader: 'vue-loader',
+//                 options: {
+//                     loaders: {
+//                         ts: 'ts-loader',
+//                         tsx: 'babel-loader!ts-loader',
+//                     }
+//                 }
+//             },
+
+//             {
+//                 test: /\.ts$/,
+//                 loader: 'ts-loader',
+//                 exclude: /node_module/,
+//                 options: { appendTsSuffixTo: [/\.vue$/] }
+//             },
+//         ],
+//     },
+// });
 mix.js('resources/js/app.js', 'public/js')
     .sass('resources/sass/app.scss', 'public/css')
+    .sourceMaps();
+mix.js('resources/js/front.js', 'public/js')
+    .vue(3)
+    .postCss('resources/css/front.css', 'public/css', [
+        require("tailwindcss"),
+    ])
+    .sourceMaps();
+
+
+mix.js('resources/js/app.js', 'public/js')
+    .sass('resources/sass/core.scss', 'public/css')
+    .sass('resources/sass/theme-default.scss', 'public/css')
     .sourceMaps();

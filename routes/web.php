@@ -24,6 +24,8 @@ use App\Http\Controllers\SchoolSessionController;
 use App\Http\Controllers\AcademicSettingController;
 use App\Http\Controllers\AssignedTeacherController;
 use App\Http\Controllers\Auth\UpdatePasswordController;
+use App\Http\Controllers\FrontController;
+use App\Http\Controllers\PostController;
 
 /*
 |--------------------------------------------------------------------------
@@ -36,14 +38,26 @@ use App\Http\Controllers\Auth\UpdatePasswordController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+
+Route::get('/',  [FrontController::class, 'index' ]);
+
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+
+
+Route::get( 'blog', [ PostController::class, 'index' ] )->name( 'posts.index' );
+
+Route::get( '/blog/{post:slug}', [ PostController::class, 'show' ] )->name( 'posts.show' );
 
 Auth::routes();
 
 Route::middleware(['auth'])->group(function () {
+Route::prefix('connect')->group(function(){
 
+    Route::get('/', function () {
+        return view('welcome');
+    });
     Route::prefix('school')->name('school.')->group(function () {
         Route::post('session/create', [SchoolSessionController::class, 'store'])->name('session.store');
         Route::post('session/browse', [SchoolSessionController::class, 'browse'])->name('session.browse');
@@ -176,4 +190,6 @@ Route::middleware(['auth'])->group(function () {
     // Update password
     Route::get('password/edit', [UpdatePasswordController::class, 'edit'])->name('password.edit');
     Route::post('password/edit', [UpdatePasswordController::class, 'update'])->name('password.update');
+});
+
 });
