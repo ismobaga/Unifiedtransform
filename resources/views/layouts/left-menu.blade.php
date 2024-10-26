@@ -1,6 +1,6 @@
-<div class="col-xs-1 col-sm-1 col-md-1 col-lg-2 col-xl-2 col-xxl-2 border-rt-e6 px-0">
+<div class="px-0 col-xs-1 col-sm-1 col-md-1 col-lg-2 col-xl-2 col-xxl-2 border-rt-e6">
     <div class="d-flex flex-column align-items-center align-items-sm-start ">
-        <ul class="nav flex-column pt-2 w-100">
+        <ul class="pt-2 nav flex-column w-100">
             <li class="nav-item">
                 <a class="nav-link {{ request()->is('home')? 'active' : '' }}" href="{{url('connect/home')}}"><i
                         class="ms-auto bi bi-grid"></i> <span class="ms-1 d-inline d-sm-none d-md-none d-xl-inline">{{
@@ -48,7 +48,7 @@
                     <li class="nav-item w-100" {{ request()->routeIs('student.list.show')? 'style="font-weight:bold;"' :
                         '' }}><a class="nav-link" href="{{route('student.list.show')}}"><i
                                 class="bi bi-person-video2 me-2"></i> {{__('messages.view_students')}}</a></li>
-                    @if (!session()->has('browse_session_id') && Auth::user()->role == "admin")
+                    @if (session()->has('browse_session_id') && Auth::user()->role == "admin")
                     <li class="nav-item w-100" {{ request()->routeIs('student.create.show')? 'style="font-weight:bold;"'
                         : '' }}><a class="nav-link" href="{{route('student.create.show')}}"><i
                                 class="bi bi-person-plus me-2"></i> {{__('messages.add_student')}}</a></li>
@@ -67,7 +67,9 @@
                     <li class="nav-item w-100" {{ request()->routeIs('teacher.list.show')? 'style="font-weight:bold;"' :
                         '' }}><a class="nav-link" href="{{route('teacher.list.show')}}"><i
                                 class="bi bi-person-video2 me-2"></i> {{ __('messages.view_teachers') }}</a></li>
-                    @if (!session()->has('browse_session_id') && Auth::user()->role == "admin")
+                    {{-- @dd(Auth::user()->role ) --}}
+                    @if (session()->has('browse_session_id') && Auth::user()->role == "admin")
+
                     <li class="nav-item w-100" {{ request()->routeIs('teacher.create.show')? 'style="font-weight:bold;"'
                         : '' }}><a class="nav-link" href="{{route('teacher.create.show')}}"><i
                                 class="bi bi-person-plus me-2"></i> {{ __('messages.add_teacher') }}</a></li>
@@ -93,7 +95,7 @@
                 <a class="nav-link {{ request()->routeIs('course.student.list.show')? 'active' : '' }}"
                     href="{{route('course.student.list.show', ['student_id' => Auth::user()->id])}}"><i
                         class="bi bi-journal-medical"></i> <span
-                        class="ms-1 d-inline d-sm-none d-md-none d-xl-inline">{{ __('messages.courses') }}<< /span></a>
+                        class="ms-1 d-inline d-sm-none d-md-none d-xl-inline">{{ __('messages.courses') }}</span></a>
             </li>
             {{-- <li class="nav-item">
                 <a class="nav-link" href="#"><i class="bi bi-file-post"></i> <span

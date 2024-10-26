@@ -15,7 +15,7 @@ class FrontController extends Controller
     public function index()
     {
         $posts = Post::with('user', 'tags', 'topic')->published()->orderBy( 'published_at', 'desc' )->limit(5)->get();
-        // dd($posts[1]);
+        // dd($posts);
 
         $mainMenu = config('menus.main_menu');
         $footerMenu = config('menus.footer_menu');

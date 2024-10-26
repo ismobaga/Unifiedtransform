@@ -23,7 +23,6 @@ class PostController extends Controller
     public function show( Post $post ) : Response
     {
         Event::dispatch( new PostViewed( $post ) );
-
-        return Inertia::render( 'Posts/Show', [ 'post' => new PostResource( $post ) ] );
+                return Inertia::render( 'Posts/Show', [ 'post' => new PostResource( $post ) ] );
     }
 }

@@ -1,6 +1,16 @@
 <?php
 
 return [
+// layout
+    'Toggle navigation' => 'Basculer la navigation',
+    'Browsing as Academic Session' => 'Navigation en tant que session académique',
+    'Current Academic Session' => 'Session académique actuelle',
+    'Create an Academic Session.' => 'Créer une session académique.',
+    'Login' => 'Connexion',
+    'Change Password' => 'Changer le mot de passe',
+    'Logout' => 'Déconnexion',
+
+
     'dashboard' => 'Tableau de bord',
     'students' => 'Étudiants',
     'add_student' => 'Ajouter un Étudiant',
@@ -38,6 +48,8 @@ return [
       // Titres et sections
       'academic_settings' => 'Paramètres académiques',
       'create_session' => 'Créer une session',
+      'create_session_aca' => 'Créer une année academique',
+
       'browse_by_session' => 'Parcourir par session',
       'create_semester' => 'Créer un semestre pour la session actuelle',
       'attendance_type' => 'Type de présence',
@@ -103,4 +115,25 @@ return [
       'assignments' => 'Devoirs',
       'actions' => 'Actions',
       'download' => 'Télécharger',
+
+      'view_attendance' => 'Voir la présence',
+      'student_name' => 'Nom de l\'étudiant',
+      'status' => 'Statut',
+      'date' => 'Date',
+      'context' => 'Contexte',
+      'present' => 'Présent',
+      'absent' => 'Absent',
+
+      'class' => 'Classe',
+      'take_attendance' => 'Prendre la présence',
+      'course' => 'Cours',
+      'section' => 'Section',
+
+      'view_attendances' => 'Voir les présences',
+
+      'current_page' => 'Voir les présences',
+
+      'current_date_time' => 'Date et heure actuelles',
+      'today_status' => 'Statut d\'aujourd\'hui',
+      'total_attended' => 'Présence totale',
 ];

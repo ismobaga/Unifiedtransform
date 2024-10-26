@@ -6,9 +6,9 @@
     <div class="row justify-content-start">
         @include('layouts.left-menu')
         <div class="col-xs-11 col-sm-11 col-md-11 col-lg-10 col-xl-10 col-xxl-10">
-            <div class="row pt-2">
+            <div class="pt-2 row">
                 <div class="col ps-4">
-                    <h1 class="display-6 mb-3">
+                    <h1 class="mb-3 display-6">
                         <i class="bi bi-tools"></i> {{ __('messages.academic_settings') }}
                     </h1>
 
@@ -17,9 +17,9 @@
                     <div class="mb-4">
                         <div class="row" data-masonry='{"percentPosition": true }'>
                             @if ($latest_school_session_id == $current_school_session_id)
-                            <div class="col-md-4 mb-4">
-                                <div class="p-3 border bg-light shadow-sm">
-                                    <h6>{{ __('messages.create_session') }}</h6>
+                            <div class="mb-4 col-md-4">
+                                <div class="p-3 border shadow-sm bg-light">
+                                    <h6>{{ __('messages.create_session_aca') }}</h6>
                                     <p class="text-danger">
                                         <small><i class="bi bi-exclamation-diamond-fill me-2"></i> {{
                                             __('messages.create_session_warning') }}</small>
@@ -38,8 +38,8 @@
                                 </div>
                             </div>
                             @endif
-                            <div class="col-md-4 mb-4">
-                                <div class="p-3 border bg-light shadow-sm">
+                            <div class="mb-4 col-md-4">
+                                <div class="p-3 border shadow-sm bg-light">
                                     <h6>{{ __('messages.browse_by_session') }}</h6>
                                     <p class="text-danger">
                                         <small><i class="bi bi-exclamation-diamond-fill me-2"></i> {{
@@ -65,8 +65,8 @@
                                 </div>
                             </div>
                             @if ($latest_school_session_id == $current_school_session_id)
-                            <div class="col-md-4 mb-4">
-                                <div class="p-3 border bg-light shadow-sm">
+                            <div class="mb-4 col-md-4">
+                                <div class="p-3 border shadow-sm bg-light">
                                     <h6>{{ __('messages.create_semester') }}</h6>
                                     <form action="{{ route('school.semester.create') }}" method="POST">
                                         @csrf
@@ -96,8 +96,8 @@
                                     </form>
                                 </div>
                             </div>
-                            <div class="col-md-4 mb-4">
-                                <div class="p-3 border bg-light shadow-sm">
+                            <div class="mb-4 col-md-4">
+                                <div class="p-3 border shadow-sm bg-light">
                                     <h6>{{ __('messages.attendance_type') }}</h6>
                                     <p class="text-danger">
                                         <small><i class="bi bi-exclamation-diamond-fill me-2"></i> {{
@@ -127,8 +127,8 @@
                                     </form>
                                 </div>
                             </div>
-                            <div class="col-md-4 mb-4">
-                                <div class="p-3 border bg-light shadow-sm">
+                            <div class="mb-4 col-md-4">
+                                <div class="p-3 border shadow-sm bg-light">
                                     <h6>{{ __('messages.create_class') }}</h6>
                                     <form action="{{ route('school.class.create') }}" method="POST">
                                         @csrf
@@ -143,8 +143,8 @@
                                     </form>
                                 </div>
                             </div>
-                            <div class="col-md-4 mb-4">
-                                <div class="p-3 border bg-light shadow-sm">
+                            <div class="mb-4 col-md-4">
+                                <div class="p-3 border shadow-sm bg-light">
                                     <h6>{{ __('messages.create_section') }}</h6>
                                     <form action="{{ route('school.section.create') }}" method="POST">
                                         @csrf
@@ -174,8 +174,8 @@
                                     </form>
                                 </div>
                             </div>
-                            <div class="col-md-4 mb-4">
-                                <div class="p-3 border bg-light shadow-sm">
+                            <div class="mb-4 col-md-4">
+                                <div class="p-3 border shadow-sm bg-light">
                                     <h6>{{ __('messages.create_course') }}</h6>
                                     <form action="{{ route('school.course.create') }}" method="POST">
                                         @csrf
@@ -230,8 +230,8 @@
                                     </form>
                                 </div>
                             </div>
-                            <div class="col-md-4 mb-4">
-                                <div class="p-3 border bg-light shadow-sm">
+                            <div class="mb-4 col-md-4">
+                                <div class="p-3 border shadow-sm bg-light">
                                     <h6>{{ __('messages.assign_teacher') }}</h6>
                                     <form action="{{ route('school.teacher.assign') }}" method="POST">
                                         @csrf
@@ -298,8 +298,8 @@
                                     </form>
                                 </div>
                             </div>
-                            <div class="col-md-4 mb-4">
-                                <div class="p-3 border bg-light shadow-sm">
+                            <div class="mb-4 col-md-4">
+                                <div class="p-3 border shadow-sm bg-light">
                                     <h6>{{ __('messages.allow_final_marks_submission') }}</h6>
                                     <form action="{{ route('school.final.marks.submission.status.update') }}"
                                         method="POST">
